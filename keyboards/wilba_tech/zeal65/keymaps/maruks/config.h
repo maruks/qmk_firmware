@@ -2,4 +2,4 @@
 
 /* enable/disable LEDs based on layout */
 #undef RGB_BACKLIGHT_USE_SPLIT_BACKSPACE
-#define RGB_BACKLIGHT_USE_SPLIT_BACKSPACE 0
+#define RGB_BACKLIGHT_USE_SPLIT_BACKSPACE 1
