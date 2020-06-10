@@ -1,6 +1,20 @@
 // Default layout for Zeal65
 #include QMK_KEYBOARD_H
 
+enum custom_keycodes {
+  EMAIL = SAFE_RANGE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case EMAIL:
+      if (record->event.pressed) {
+        SEND_STRING("maris.orbidans@gmail.com");
+      }
+  }
+  return true;
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #define _______ KC_TRNS
@@ -17,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Fn1 Layer
 [1] = LAYOUT_65_all(
   _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, KC_HOME,
-  _______, _______, KC_UP,   _______, _______, _______, _______, _______, _______, _______, _______, KC_SLCK, KC_PAUS, _______, KC_INS,
+  _______, _______, KC_UP,   EMAIL  , _______, _______, _______, _______, _______, _______, _______, KC_SLCK, KC_PAUS, _______, KC_INS,
   KC_CAPS, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, _______, _______, _______, _______, _______, _______,          KC_END,
   _______,          _______, _______, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______, _______,
   _______, _______,                                              _______,                   _______, MO(2)  , KC_HOME, _______, KC_END ),
